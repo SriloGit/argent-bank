@@ -5,26 +5,6 @@ import UserService from "../services/user.service";
 import Header from "../components/header/header";
 
 function User(){
-    const [content, setContent] = useState("");
-
-  useEffect(() => {
-    UserService.getUserBoard().then(
-      (response) => {
-        setContent(response.data);
-      },
-      (error) => {
-        const _content =
-          (error.response &&
-            error.response.data &&
-            error.response.data.message) ||
-          error.message ||
-          error.toString();
-
-        setContent(_content);
-      }
-    );
-  }, []);
-
     return(
         <div>
             <Header/>
