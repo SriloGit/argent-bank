@@ -1,6 +1,6 @@
 import React from "react";
 
-function MainHeader(userName) {
+function MainHeader({userName}) {
   
   return (
     <div className="header">

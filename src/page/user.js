@@ -1,21 +1,35 @@
 import Accounts from "../components/account/account";
-import Header from "../components/header/header";
 import MainHeader from "../components/mainheader/mainheader";
-import { Navigate } from 'react-router-dom';
-import { useSelector } from "react-redux";
+import React, { useState, useEffect } from "react";
+import UserService from "../services/user.service";
+import Header from "../components/header/header";
 
 function User(){
-    const { user: currentUser } = useSelector((state) => state.auth);
+    const [content, setContent] = useState("");
 
- /* if (!currentUser) {
-    return <Navigate to="/signin" />;
-  }*/
+  useEffect(() => {
+    UserService.getUserBoard().then(
+      (response) => {
+        setContent(response.data);
+      },
+      (error) => {
+        const _content =
+          (error.response &&
+            error.response.data &&
+            error.response.data.message) ||
+          error.message ||
+          error.toString();
+
+        setContent(_content);
+      }
+    );
+  }, []);
 
     return(
         <div>
             <Header/>
-            <main>
-                <MainHeader userName={currentUser.email}/>
+            <main className="main bg-darkpurple">
+                <MainHeader userName="Tony"/>
                 <Accounts/>
             </main>
         </div>

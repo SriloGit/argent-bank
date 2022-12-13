@@ -51,7 +51,8 @@ const Login = () => {
   }
 
   return (
-    <div className="sign-in-content">
+    <main className="main bg-darkpurple">
+    <section className="sign-in-content">
       <div className="card card-container">
         <i
           alt="profile-img"
@@ -118,6 +119,7 @@ const Login = () => {
           )}
         </Formik>
       </div>
+      
 
       {message && (
         <div className="input-wrapper">
@@ -126,7 +128,8 @@ const Login = () => {
           </div>
         </div>
       )}
-    </div>
+    </section>
+    </main>
   );
 };
 
