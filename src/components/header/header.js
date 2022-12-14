@@ -1,16 +1,8 @@
 import logo from "../../assets/argentBankLogo.png"
 import { useDispatch, useSelector } from "react-redux";
-import { logout } from "../../slices/auth";
-import { useCallback } from "react";
 
 function Header(){
 
-  const dispatch = useDispatch();
-  const { user: currentUser } = useSelector((state) => state.auth);
-
-  const logOut = useCallback(() => {
-    dispatch(logout());
-  }, [dispatch]);
 
     return(
       
@@ -23,12 +15,12 @@ function Header(){
       />
       <h1 className="sr-only">Argent Bank</h1>
     </a>
-      {currentUser ? (
+      {true ? (
       <div className="navbar-nav ml-auto">
                 <a href="/user" className="main-nav-item">
                   Tony
                 </a>
-                <a href="/signin" className="main-nav-item" onClick={logOut}>
+                <a href="/signin" className="main-nav-item">
                   LogOut
                 </a>
             </div>
