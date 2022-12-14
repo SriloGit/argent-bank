@@ -39,11 +39,11 @@ const Login = () => {
       .unwrap()
       .then(() => {
         navigate("/user");
-        window.location.reload();
       })
       .catch(() => {
         setLoading(false);
       });
+      
   };
 
   if (isLoggedIn) {
