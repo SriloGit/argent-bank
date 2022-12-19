@@ -6,6 +6,8 @@ import * as Yup from "yup";
 
 import { login } from "../../slices/auth";
 import { clearMessage } from "../../slices/message";
+import { apiPost, apiPostProfile } from "../../services/auth.service";
+import { userProfile } from "../../slices/profile";
 
 const Login = () => {
   let navigate = useNavigate();
@@ -33,8 +35,17 @@ const Login = () => {
 
   const handleLogin = (formValue) => {
     const { username, password } = formValue;
+
     setLoading(true);
 
+    apiPost("/user/login", {email:username, password:password}).then((response) => { 
+      localStorage.setItem("token", response.data.body.token)
+      apiPostProfile("/user/profile", response.data.body.token).then((response) => {        
+        dispatch(userProfile(response.data.body))
+        localStorage.setItem("firstName", response.data.body.firstName)
+        localStorage.setItem("lastName", response.data.body.lastName)
+      })
+     })
     dispatch(login({ username, password }))
       .unwrap()
       .then(() => {
@@ -43,7 +54,6 @@ const Login = () => {
       .catch(() => {
         setLoading(false);
       });
-      
   };
 
   if (isLoggedIn) {

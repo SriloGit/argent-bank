@@ -5,8 +5,9 @@ import { useCallback } from "react";
 
 function Header(){
 
-  const dispatch = useDispatch();
-  const { user: currentUser } = useSelector((state) => state.auth);
+  const dispatch = useDispatch()
+  const { user: currentUser } = useSelector((state) => state.auth)
+  const name = useSelector((state)=>state.profile.firstName)
 
   const logOut = useCallback(() => {
     dispatch(logout());
@@ -26,7 +27,7 @@ function Header(){
       {currentUser ? (
       <div className="navbar-nav ml-auto">
                 <a href="/user" className="main-nav-item">
-                  Tony
+                {name}
                 </a>
                 <a href="/signin" className="main-nav-item" onClick={logOut}>
                   LogOut

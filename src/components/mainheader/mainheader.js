@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useRef, useState } from 'react'
 import { userProfile } from '../../slices/profile'
 import { getProfile, setProfile } from '../../services/user.service'
+import { Navigate } from 'react-router'
 
 /**
          * MainHeader component
@@ -13,6 +14,7 @@ import { getProfile, setProfile } from '../../services/user.service'
 function MainHeader() {
   const dispatch = useDispatch()
 
+  const { isLoggedIn } = useSelector((state) => state.auth);
   const name = useSelector((state)=>state.profile.firstName)
   const lastname = useSelector((state)=>state.profile.lastName)
 
@@ -41,6 +43,10 @@ function MainHeader() {
       setEditingProfile (false)
   }
 
+  }
+  
+  if (!isLoggedIn) {
+    return <Navigate to="/signin" />;
   }
   
     return (

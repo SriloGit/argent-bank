@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const API_URL = "http://localhost:3001/api/v1/user/";
+const BASE_URL= 'http://localhost:3001/api/v1'
 
 const register = (email, password, firstName, lastName) => {
   return axios.post(API_URL + "signup", {
@@ -20,7 +21,7 @@ const login = (email, password) => {
     .then((response) => {
       console.log(response)
       if (response.data.body.token) {
-        localStorage.setItem("user", JSON.stringify(response.data));
+        localStorage.setItem("token", response.data.body.token)
       }
 
       return response.data;
@@ -28,21 +29,40 @@ const login = (email, password) => {
 };
 
 const logout = () => {
-  localStorage.removeItem("user");
+  localStorage.removeItem("lastName")
+  localStorage.removeItem("firstName")
+  localStorage.removeItem("token")
   return axios.post(API_URL + "signout").then((response) => {
     return response.data;
   });
 };
 
-const getCurrentUser = () => {
-  return JSON.parse(localStorage.getItem("user"));
-};
+export async function apiPost(endpoint, data){
+
+  const response = await axios({
+      method:"post",
+      url: BASE_URL + endpoint,
+      data: data
+  })
+  console.log(response)
+  return response
+}
+
+export async function apiPostProfile(endpoint, token){
+
+  const response = await axios({
+      method:"post",
+      url: BASE_URL + endpoint,
+      headers: {authorization:"Bearer" + token}
+  })
+  console.log(response)
+  return response
+}
 
 const AuthService = {
   register,
   login,
   logout,
-  getCurrentUser,
 }
 
 export default AuthService;

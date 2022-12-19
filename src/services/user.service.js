@@ -1,11 +1,12 @@
 import axios from "axios";
 
+const BASE_URL= 'http://localhost:3001/api/v1'
+
 /**
  * Instance axios
  */
 const instanceAxios = axios.create({
-  baseURL: 'http://localhost:3001/api/v1/',
-  //baseURL: process.env.BASE_URL,
+  baseURL: BASE_URL
 })
 
 instanceAxios.interceptors.request.use(config => {
@@ -15,7 +16,7 @@ instanceAxios.interceptors.request.use(config => {
 
 export default instanceAxios
 
-const tokenName = 'tokenSessionBank_'
+const tokenName = 'token'
 
 /**
  * 
@@ -42,15 +43,14 @@ export async function getProfile() {
   const configAxios = {
     headers:{
     //'accept':'application/json',
-    'Authorization':'Bearer '+getToken()
+    authorization:'Bearer'+ getToken()
     }
   }
-
       return instanceAxios.post('user/profile',dataRequest, configAxios)
 
 }
-const bankUserFirstName = 'bankUserFirstName'
-const bankUserLastName = 'bankUserLastName'
+const bankUserFirstName = 'firstName'
+const bankUserLastName = 'lastName'
 
 /**
  * 
@@ -94,7 +94,7 @@ export async function setProfile(firstname, lastname) {
     lastName:lastname}
   const configAxios = {
     headers:{
-    'Authorization':'Bearer '+getToken()
+    authorization:'Bearer '+ getToken()
     }
   }
       return instanceAxios.put('user/profile',dataRequest, configAxios)
