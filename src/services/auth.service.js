@@ -32,9 +32,7 @@ const logout = () => {
   localStorage.removeItem("lastName")
   localStorage.removeItem("firstName")
   localStorage.removeItem("token")
-  return axios.post(API_URL + "signout").then((response) => {
-    return response.data;
-  });
+  
 };
 
 export async function apiPost(endpoint, data){
