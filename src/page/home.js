@@ -4,13 +4,13 @@ import Hero from "../components/hero/hero";
 
 function Home(){
     return(
-        <div>
+        <>
             <Header/>
             <main>
                 <Hero/>
                 <Features/>
             </main>
-        </div>
+        </>
     )
 }
 

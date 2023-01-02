@@ -5,13 +5,13 @@ import Header from "../components/header/header";
 function User(){
 
     return(
-        <div>
+        <>
             <Header/>
             <main className="main bg-darkpurple">
                 <MainHeader/>
                 <Accounts/>
             </main>
-        </div>
+        </>
     )
 }
 

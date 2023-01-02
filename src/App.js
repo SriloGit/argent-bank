@@ -4,7 +4,6 @@ import Signin from './page/signinpage'
 import User from './page/user'
 import Error from './page/error'
 import { BrowserRouter, Routes, Route} from 'react-router-dom'
-import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
 

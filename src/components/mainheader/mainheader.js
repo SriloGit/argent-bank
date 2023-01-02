@@ -64,15 +64,15 @@ function MainHeader() {
       <form className="form">
         <div className="formWrappers">
           <div className="formWrapper">
-            <input id='username' type='text' placeholder={name} ref={usernameInput} />
+            <input className="inputWrapper" id='username' type='text' placeholder={name} ref={usernameInput} />
           </div>
           <div className="formWrapper">
-            <input id='userLastName' type='text' placeholder={lastname} ref={userLastNameInput} />
+            <input className="inputWrapper" id='userLastName' type='text' placeholder={lastname} ref={userLastNameInput} />
           </div>
         </div>
         <div className="formButtons">
-          <button className="MainHeader.formButton" onClick={saveEditProfile}>Save</button>
-          <button className="MainHeader.formButton" onClick={cancelEditProfile}>Cancel</button>
+          <button className="formButton" onClick={saveEditProfile}>Save</button>
+          <button className="formButton" onClick={cancelEditProfile}>Cancel</button>
         </div>
       </form>
       

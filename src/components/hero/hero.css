@@ -11,7 +11,7 @@
   .hero-content {
     position: relative;
     top: 2rem;
-    width: 200px;
+    width: 260px;
     background: white;
     padding: 2rem;
     text-align: left;
@@ -39,7 +39,7 @@
       position: absolute;
       top: 50px;
       right: 50px;
-      width: 300px;
+      width: 365px;
       margin: 2rem;
     }
   

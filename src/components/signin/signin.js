@@ -113,10 +113,9 @@ const Login = () => {
                 <input type="checkbox" id="remember-me" />
                 <label htmlFor="remember-me">Remember me</label>
               </div>
-              <div className="input-wrapper">
                 <button
                   type="submit"
-                  className="btn btn-primary btn-block"
+                  className="sign-in-button"
                   disabled={loading}
                 >
                   {loading && (
@@ -124,7 +123,6 @@ const Login = () => {
                   )}
                   <span>Sign In</span>
                 </button>
-              </div>
             </Form>
           )}
         </Formik>

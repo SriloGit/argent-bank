@@ -30,10 +30,12 @@ function Header(){
       {isLoggedIn ? (
       <div className="navbar-nav ml-auto">
                 <Link to="/user" className="main-nav-item">
+                <i className="fa fa-user-circle"></i>
                 {name}
                 </Link>
                 <Link href="/signin" className="main-nav-item" onClick={logOut}>
-                  LogOut
+                <i className="fa fa-sign-out"></i>
+                  Sign Out
                 </Link>
             </div>
       ) : (
